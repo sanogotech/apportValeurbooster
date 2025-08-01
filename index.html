@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apport de Valeur en Entreprise</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark-color);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            transform: translateY(-3px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.03)" points="0,100 100,0 100,100"/></svg>');
+            background-size: cover;
+            opacity: 0.5;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-hero {
+            background-color: var(--accent-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+        
+        .value-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 15px;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .impact-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        
+        .tab-content {
+            padding: 30px 0;
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--dark-color);
+            font-weight: 600;
+            border: none;
+            padding: 15px 25px;
+            position: relative;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--secondary-color);
+            background-color: transparent;
+        }
+        
+        .nav-tabs .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.7;
+        }
+        
+        /* Animation classes */
+        .wow-effect {
+            opacity: 0;
+            transition: all 0.6s;
+        }
+        
+        .wow-effect.animated {
+            opacity: 1;
+        }
+        
+        .slideInLeft {
+            transform: translateX(-50px);
+        }
+        
+        .slideInLeft.animated {
+            transform: translateX(0);
+        }
+        
+        .slideInRight {
+            transform: translateX(50px);
+        }
+        
+        .slideInRight.animated {
+            transform: translateX(0);
+        }
+        
+        .slideInUp {
+            transform: translateY(50px);
+        }
+        
+        .slideInUp.animated {
+            transform: translateY(0);
+        }
+        
+        .zoomIn {
+            transform: scale(0.8);
+        }
+        
+        .zoomIn.animated {
+            transform: scale(1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">ValeurEntreprise</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categories">Catégories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#strategies">Stratégies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#stats">Statistiques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container text-center wow-effect zoomIn">
+            <h1 class="hero-title">21 Apports de Valeur en Entreprise</h1>
+            <p class="hero-subtitle">Découvrez comment créer et maximiser la valeur dans votre organisation</p>
+            <a href="#categories" class="btn btn-hero btn-lg">Explorer les Catégories</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title wow-effect slideInUp">Catégories d'Apports de Valeur</h2>
+            
+            <ul class="nav nav-tabs justify-content-center" id="valueTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="growth-tab" data-bs-toggle="tab" data-bs-target="#growth" type="button" role="tab">Croissance</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="efficiency-tab" data-bs-toggle="tab" data-bs-target="#efficiency" type="button" role="tab">Efficacité</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="quality-tab" data-bs-toggle="tab" data-bs-target="#quality" type="button" role="tab">Qualité</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image" type="button" role="tab">Image</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="innovation-tab" data-bs-toggle="tab" data-bs-target="#innovation" type="button" role="tab">Innovation</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="human-tab" data-bs-toggle="tab" data-bs-target="#human" type="button" role="tab">Capital Humain</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="governance-tab" data-bs-toggle="tab" data-bs-target="#governance" type="button" role="tab">Gouvernance</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab">Tous</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="valueTabsContent">
+                <!-- Growth Tab -->
+                <div class="tab-pane fade show active" id="growth" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    1. Augmentation du chiffre d'affaires
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">+15% CA annuel</span></p>
+                                    <p><strong>Clients ciblés:</strong> Clients existants & nouveaux</p>
+                                    <p><strong>Risques:</strong> Concurrence, saturation marché</p>
+                                    <p><strong>Coûts:</strong> Marketing, formation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInRight">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    2. Innovation produit ou service
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">+8% CA par nouveau produit</span></p>
+                                    <p><strong>Clients ciblés:</strong> Marché cible spécifique</p>
+                                    <p><strong>Risques:</strong> Échec adoption produit</p>
+                                    <p><strong>Coûts:</strong> R&D, prototypage, tests marché</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    3. Expansion géographique
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">+12% CA en nouveaux marchés</span></p>
+                                    <p><strong>Clients ciblés:</strong> Nouveaux clients géolocalisés</p>
+                                    <p><strong>Risques:</strong> Risques réglementaires, logistique</p>
+                                    <p><strong>Coûts:</strong> Implantation, marketing local</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInRight">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    4. Meilleure connaissance client
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">+30% ventes croisées</span></p>
+                                    <p><strong>Clients ciblés:</strong> Clients existants</p>
+                                    <p><strong>Risques:</strong> Protection données (RGPD)</p>
+                                    <p><strong>Coûts:</strong> Logiciel CRM, collecte & analyse</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    5. Diversification des sources de revenus
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Réduction dépendance à un produit</span></p>
+                                    <p><strong>Clients ciblés:</strong> Nouveaux segments</p>
+                                    <p><strong>Risques:</strong> Complexité gestion</p>
+                                    <p><strong>Coûts:</strong> Développement produit, marketing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Efficiency Tab -->
+                <div class="tab-pane fade" id="efficiency" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    6. Réduction des coûts opérationnels
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">-10% coûts fixes et variables</span></p>
+                                    <p><strong>Clients ciblés:</strong> Interne (processus, équipes)</p>
+                                    <p><strong>Risques:</strong> Résistance au changement</p>
+                                    <p><strong>Coûts:</strong> Digitalisation, formation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInRight">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    7. Optimisation des délais de livraison
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">-30% délais</span></p>
+                                    <p><strong>Clients ciblés:</strong> Clients finaux & B2B</p>
+                                    <p><strong>Risques:</strong> Difficultés logistiques</p>
+                                    <p><strong>Coûts:</strong> Supply chain, logistique</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    8. Digitalisation des processus
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Gain productivité +25%</span></p>
+                                    <p><strong>Clients ciblés:</strong> Interne, équipes opérationnelles</p>
+                                    <p><strong>Risques:</strong> Cyber-risques</p>
+                                    <p><strong>Coûts:</strong> Investissement IT, maintenance</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInRight">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    9. Amélioration de la gestion des stocks
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Réduction pertes & ruptures</span></p>
+                                    <p><strong>Clients ciblés:</strong> Interne & clients</p>
+                                    <p><strong>Risques:</strong> Mauvaise prévision</p>
+                                    <p><strong>Coûts:</strong> Système gestion stocks, formation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quality Tab -->
+                <div class="tab-pane fade" id="quality" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    10. Amélioration de la satisfaction client
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">+20% fidélisation</span></p>
+                                    <p><strong>Clients ciblés:</strong> Clients réguliers</p>
+                                    <p><strong>Risques:</strong> Mauvaise qualité service</p>
+                                    <p><strong>Coûts:</strong> Support client, formation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInRight">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    11. Amélioration de la qualité produit
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Diminution retours et réclamations</span></p>
+                                    <p><strong>Clients ciblés:</strong> Clients finaux</p>
+                                    <p><strong>Risques:</strong> Coûts de non-qualité élevés</p>
+                                    <p><strong>Coûts:</strong> Contrôle qualité, formation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    12. Personnalisation de l'offre
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Augmentation engagement</span></p>
+                                    <p><strong>Clients ciblés:</strong> Clients exigeants</p>
+                                    <p><strong>Risques:</strong> Complexité logistique</p>
+                                    <p><strong>Coûts:</strong> Développement, données clients</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Tab -->
+                <div class="tab-pane fade" id="image" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    13. Renforcement de la marque
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">+15% notoriété</span></p>
+                                    <p><strong>Clients ciblés:</strong> Marché large</p>
+                                    <p><strong>Risques:</strong> Risques réputationnels</p>
+                                    <p><strong>Coûts:</strong> Communication, publicité</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInRight">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    14. Amélioration conformité réglementaire
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Réduction amendes & sanctions</span></p>
+                                    <p><strong>Clients ciblés:</strong> Interne & clients</p>
+                                    <p><strong>Risques:</strong> Non-conformité coûteuse</p>
+                                    <p><strong>Coûts:</strong> Audit, formation, conseils juridiques</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    15. Développement durable & RSE
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Image positive & accès marchés verts</span></p>
+                                    <p><strong>Clients ciblés:</strong> Clients sensibles & partenaires</p>
+                                    <p><strong>Risques:</strong> Investissement & ROI différé</p>
+                                    <p><strong>Coûts:</strong> Investissement durable, certifications</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Innovation Tab -->
+                <div class="tab-pane fade" id="innovation" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    16. Adoption de nouvelles technologies
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Amélioration compétitivité</span></p>
+                                    <p><strong>Clients ciblés:</strong> Interne & clients</p>
+                                    <p><strong>Risques:</strong> Obsolescence rapide, coûts de transition</p>
+                                    <p><strong>Coûts:</strong> Investissement IT, formation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInRight">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    17. Automatisation des processus
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Réduction erreurs & gain temps</span></p>
+                                    <p><strong>Clients ciblés:</strong> Interne</p>
+                                    <p><strong>Risques:</strong> Problèmes d'intégration, résistance</p>
+                                    <p><strong>Coûts:</strong> Logiciels, maintenance, formation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    18. Sécurité informatique renforcée
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Réduction incidents cybersécurité</span></p>
+                                    <p><strong>Clients ciblés:</strong> Interne & clients</p>
+                                    <p><strong>Risques:</strong> Cyberattaques</p>
+                                    <p><strong>Coûts:</strong> Solutions sécurité, audits</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Human Tab -->
+                <div class="tab-pane fade" id="human" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    19. Développement des compétences
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Amélioration performance</span></p>
+                                    <p><strong>Clients ciblés:</strong> Collaborateurs internes</p>
+                                    <p><strong>Risques:</strong> Turnover, sous-utilisation</p>
+                                    <p><strong>Coûts:</strong> Formation, coaching, recrutement</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 wow-effect slideInRight">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    20. Engagement et bien-être des employés
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Réduction absentéisme & turnover</span></p>
+                                    <p><strong>Clients ciblés:</strong> Collaborateurs</p>
+                                    <p><strong>Risques:</strong> Climat social dégradé</p>
+                                    <p><strong>Coûts:</strong> Programmes RH, événements</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Governance Tab -->
+                <div class="tab-pane fade" id="governance" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 wow-effect slideInLeft">
+                            <div class="value-card">
+                                <div class="card-header">
+                                    21. Amélioration de la gouvernance
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Impact:</strong> <span class="impact-badge">Meilleure prise de décision</span></p>
+                                    <p><strong>Clients ciblés:</strong> Interne & parties prenantes</p>
+                                    <p><strong>Risques:</strong> Manque transparence</p>
+                                    <p><strong>Coûts:</strong> Outils décisionnels, audits</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- All Tab -->
+                <div class="tab-pane fade" id="all" role="tabpanel">
+                    <div class="row">
+                        <!-- Cards for all 21 value propositions will be displayed here -->
+                        <!-- They will be populated via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategies Section -->
+    <section id="strategies" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title wow-effect slideInUp">Stratégies de Mise en Œuvre</h2>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4 wow-effect slideInLeft">
+                    <div class="value-card h-100">
+                        <div class="card-header bg-primary text-white">
+                            <i class="fas fa-chart-line me-2"></i> Stratégie de Croissance
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Focus sur l'Expansion</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Analyse de marché approfondie</li>
+                                <li class="list-group-item">Développement de nouveaux produits</li>
+                                <li class="list-group-item">Pénétration de nouveaux marchés</li>
+                                <li class="list-group-item">Stratégies de fidélisation client</li>
+                                <li class="list-group-item">Partenariats stratégiques</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4 wow-effect zoomIn">
+                    <div class="value-card h-100">
+                        <div class="card-header bg-success text-white">
+                            <i class="fas fa-cogs me-2"></i> Stratégie d'Efficacité
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Optimisation des Processus</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Cartographie des processus</li>
+                                <li class="list-group-item">Automatisation des tâches répétitives</li>
+                                <li class="list-group-item">Formation continue des équipes</li>
+                                <li class="list-group-item">Gestion lean des stocks</li>
+                                <li class="list-group-item">Analyse des données opérationnelles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4 wow-effect slideInRight">
+                    <div class="value-card h-100">
+                        <div class="card-header bg-info text-white">
+                            <i class="fas fa-lightbulb me-2"></i> Stratégie d'Innovation
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Culture de l'Innovation</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Veille technologique</li>
+                                <li class="list-group-item">Ateliers de créativité</li>
+                                <li class="list-group-item">Prototypage rapide</li>
+                                <li class="list-group-item">Tests utilisateurs</li>
+                                <li class="list-group-item">Partenariats R&D</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="stats" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title wow-effect slideInUp">Impact des Apports de Valeur</h2>
+            
+            <div class="row text-center">
+                <div class="col-md-3 wow-effect slideInLeft">
+                    <div class="stat-item">
+                        <div class="stat-number">+25%</div>
+                        <div class="stat-title">Productivité</div>
+                        <p class="text-muted">Amélioration moyenne après digitalisation</p>
+                    </div>
+                </div>
+                <div class="col-md-3 wow-effect slideInUp">
+                    <div class="stat-item">
+                        <div class="stat-number">+30%</div>
+                        <div class="stat-title">Fidélisation Client</div>
+                        <p class="text-muted">Avec personnalisation de l'offre</p>
+                    </div>
+                </div>
+                <div class="col-md-3 wow-effect slideInUp">
+                    <div class="stat-item">
+                        <div class="stat-number">-40%</div>
+                        <div class="stat-title">Coûts Opérationnels</div>
+                        <p class="text-muted">Réduction après optimisation</p>
+                    </div>
+                </div>
+                <div class="col-md-3 wow-effect slideInRight">
+                    <div class="stat-item">
+                        <div class="stat-number">5x</div>
+                        <div class="stat-title">ROI Innovation</div>
+                        <p class="text-muted">Retour sur investissement moyen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title wow-effect slideInUp">Contactez-nous</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8 wow-effect zoomIn">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Sujet</label>
+                            <input type="text" class="form-control" id="subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 wow-effect slideInLeft">
+                    <h3 class="footer-title">ValeurEntreprise</h3>
+                    <p>Plateforme éducative sur la création de valeur en entreprise à travers des stratégies innovantes et efficaces.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 wow-effect slideInUp">
+                    <h3 class="footer-title">Liens</h3>
+                    <div class="footer-links">
+                        <a href="#home">Accueil</a>
+                        <a href="#categories">Catégories</a>
+                        <a href="#strategies">Stratégies</a>
+                        <a href="#stats">Statistiques</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 wow-effect slideInUp">
+                    <h3 class="footer-title">Ressources</h3>
+                    <div class="footer-links">
+                        <a href="#">Blog</a>
+                        <a href="#">Études de cas</a>
+                        <a href="#">Webinaires</a>
+                        <a href="#">Outils gratuits</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 wow-effect slideInRight">
+                    <h3 class="footer-title">Contact</h3>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 123 Rue de la Valeur, Paris</p>
+                    <p><i class="fas fa-phone me-2"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-envelope me-2"></i> contact@valeur-entreprise.com</p>
+                </div>
+            </div>
+            <div class="copyright wow-effect slideInUp">
+                <p>&copy; 2023 ValeurEntreprise. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        // Function to handle scroll events
+        function handleScroll() {
+            const elements = document.querySelectorAll('.wow-effect');
+            
+            elements.forEach(element => {
+                if (isInViewport(element)) {
+                    element.classList.add('animated');
+                    
+                    // Add specific animation class based on existing classes
+                    if (element.classList.contains('slideInLeft')) {
+                        element.classList.add('slideInLeft');
+                    } else if (element.classList.contains('slideInRight')) {
+                        element.classList.add('slideInRight');
+                    } else if (element.classList.contains('slideInUp')) {
+                        element.classList.add('slideInUp');
+                    } else if (element.classList.contains('zoomIn')) {
+                        element.classList.add('zoomIn');
+                    }
+                }
+            });
+        }
+        
+        // Populate the "All" tab with all value cards
+        function populateAllTab() {
+            const allTab = document.querySelector('#all .row');
+            const categories = ['growth', 'efficiency', 'quality', 'image', 'innovation', 'human', 'governance'];
+            
+            categories.forEach(category => {
+                const cards = document.querySelectorAll(`#${category} .value-card`);
+                cards.forEach(card => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-6 wow-effect zoomIn';
+                    col.innerHTML = card.parentElement.innerHTML;
+                    allTab.appendChild(col);
+                });
+            });
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate the "All" tab
+            populateAllTab();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll);
+            
+            // Trigger once on load to check initial viewport
+            handleScroll();
+            
+            // Add active class to nav items on scroll
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 300)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}`) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
